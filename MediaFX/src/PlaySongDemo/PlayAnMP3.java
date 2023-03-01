@@ -28,9 +28,15 @@ public class PlayAnMP3 extends Application {
   @Override
   public void start(Stage stage) throws Exception {
     BorderPane pane = new BorderPane();
-    String path = "songfiles/Capture.mp3";
-    pane.setCenter( new Label(path));
+    
+    // Changed the song from Capture.mp3 to DanseMacabreViolinHook.mp3
+    
+    String path = "songfiles/DanseMacabreViolinHook.mp3";
+    
+    // The two below lines were swapped
     playASong(path);
+    pane.setCenter( new Label(path));
+    
     // Put the pane in a sized Scene and show the GUI
     Scene scene = new Scene(pane, 255, 85); // 255 pixels wide, 85 pixels tall
     stage.setScene(scene);
@@ -51,6 +57,8 @@ public class PlayAnMP3 extends Application {
     mediaPlayer.play();
       
     mediaPlayer.setOnEndOfMedia(new Waiter());
+    
+    //Adding a comment above this line to indicate a change has been made
     System.out.println("You may need to shut this App down");
  
     }
@@ -58,8 +66,10 @@ public class PlayAnMP3 extends Application {
   private class Waiter implements Runnable {
     @Override
     public void run() {
-      songsPlayed++;
+    	
+    	//These two lines below were also swapped
       System.out.println("Song ended, play song #" + songsPlayed);
+      songsPlayed++;
       Platform.exit();
     }
   }
